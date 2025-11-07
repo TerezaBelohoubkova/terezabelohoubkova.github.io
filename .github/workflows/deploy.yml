@@ -1,0 +1,53 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Inject password hash
+        env:
+          PASSWORD: ${{ secrets.STAKEHOLDER_PASSWORD }}
+        run: |
+          # Check if password secret is set
+          if [ -z "$PASSWORD" ]; then
+            echo "Warning: STAKEHOLDER_PASSWORD secret is not set. Using placeholder."
+            HASH="PLACEHOLDER_PASSWORD_HASH"
+          else
+            # Generate SHA-256 hash of the password
+            HASH=$(echo -n "$PASSWORD" | openssl dgst -sha256 | sed 's/^.* //')
+          fi
+          
+          # Replace placeholder in template file to generate password-hash.js
+          sed "s/{{PASSWORD_HASH}}/$HASH/g" pages/password-hash.js.template > pages/password-hash.js
+          
+          echo "Password hash injected successfully"
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+

@@ -12,21 +12,71 @@
         </script>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-        <title>MH brand design</title>
+        <title>Stakeholder research</title>
         <link rel="stylesheet" href="/pages/mediaqueries.css" />
         <link rel="stylesheet" href="/pages/style.css" />
         <link rel="stylesheet" href="/pages/projects.css" />
-        <link rel="stylesheet" href="/pages/MH-brand.css" />
+        <link rel="stylesheet" href="/pages/stakeholder-research.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <script src="/pages/MH-carousel.js" type="module"></script>
+        <script src="/pages/stakeholder-research-carousel.js" type="module"></script>
+        <script src="/pages/stakeholder-research-auth.js" type="module"></script>
 
         <link rel="icon" type="image/x-icon" href="/assets/favicon-32x32.png">
         <link
             href="https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&family=Questrial&display=swap"
             rel="stylesheet" />
+        <!-- Check authentication immediately to prevent flash -->
+        <script>
+            (function() {
+                const SESSION_STORAGE_KEY = 'stakeholder_research_authenticated';
+                const isAuthenticated = sessionStorage.getItem(SESSION_STORAGE_KEY) === 'true';
+                if (isAuthenticated) {
+                    // Add class to body immediately to hide overlay
+                    document.documentElement.setAttribute('data-authenticated', 'true');
+                }
+            })();
+        </script>
+        <style>
+            /* Hide overlay if authenticated */
+            html[data-authenticated="true"] #password-overlay {
+                display: none !important;
+            }
+            html[data-authenticated="true"] #page-content {
+                visibility: visible !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+            }
+        </style>
     </head>
     <body>
+        <!-- Password Protection Overlay -->
+        <div id="password-overlay" class="password-overlay">
+            <div class="password-container">
+                <h2>Protected Page</h2>
+                <p>Please enter the password to access this content</p>
+                <form id="password-form" onsubmit="checkPassword(event)" autocomplete="off" data-form-type="other">
+                    <div class="password-input-wrapper">
+                        <input 
+                            type="text" 
+                            id="password-input" 
+                            name="access-code"
+                            placeholder="Enter password" 
+                            autocomplete="off"
+                            data-lpignore="true"
+                            data-1p-ignore="true"
+                            data-bwignore="true"
+                            data-form-type="other"
+                            autofocus
+                        />
+                    </div>
+                    <div class="password-error" id="password-error"></div>
+                    <button type="submit" class="password-submit-btn">Access</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Navbar (always visible) -->
         <div class="nav-wrapper">
             <nav id="desktop-nav">
                 <div>
@@ -63,6 +113,8 @@
             </div>
         </div>
 
+        <!-- Page Content (hidden until authenticated) -->
+        <div id="page-content" class="page-content">
         <div class="container">
             <section id="hero" class="mobile-first">
                 <div class="section_container">
@@ -77,28 +129,26 @@
                 </div>
                 <div class="section_container">
                     <div class="section_subcontainer middle">
-                        <h1 class="title hero_width text-center">Business identity that stands out and targets the right customers</h1>
+                        <h1 class="title hero_width text-center">Understanding UX maturity in a project</h1>
                         <svg class="line" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 786 2" fill="none">
                             <path d="M1 1H785" stroke="#D5D3F8" stroke-linecap="round"/>
                         </svg>    
                         <div class="MH-keys">
                             <div class="MH-key">
-                                <h3 class="subheader_h3 text-center">The Business</h3>
-                                <p class="section_text_p2 text-center">Magda Hubáčková hairdresser</p>
+                                <h3 class="subheader_h3 text-center">Project</h3>
+                                <p class="section_text_p2 text-center">SAP Green Ledger</p>
                             </div>
                             <div class="MH-key">
                                 <h3 class="subheader_h3 text-center">Roles</h3>
-                                <p class="section_text_p2 text-center">Graphic designer</p>
+                                <p class="section_text_p2 text-center">Researcher
+                                    <br>Facilitator</p>
                             </div>
                             <div class="MH-key">
                                 <h3 class="subheader_h3 text-center">Timeline</h3>
-                                <p class="section_text_p2 text-center">1 month</p>
-                            </div>
-                            <div class="MH-key">
-                                <h3 class="subheader_h3 text-center">Tools</h3>
-                                <p class="section_text_p2 text-center">Figma
-                                    <br>Photopea
-                                    <br>Krita</p>
+                                <p class="section_text_p2 text-center">4 months</p>
+                            </div> <div class="MH-key">
+                                <h3 class="subheader_h3 text-center">Method</h3>
+                                <p class="section_text_p2 text-center">User interviews</p>
                             </div>
                         </div>
                     </div>
@@ -110,268 +160,190 @@
     <div class="container">
         <section id="summary">
             <div class="section_container">                    
-                <div class="flex left">
-                    <img
-                    src="/assets/MH_brand/summary_pic.webp"
-                    alt="picture"
-                    class="summary_pic"
-                        />
-                </div>
-                <div class="section_subcontainer right">
 
-                    <div class="flex right gap-24"> 
-                        <h1 class="title right">Creative hair styling</h1>
-                        <p class="section_text_p2">
-                            Magda is an experienced hairdresser, whose work is practically art. She prefers clients who are not afraid to be bold and brave when it comes to color of their hair.
-                            <br>    
-                            Her staple is unicorn hair- a mix of purple, blue and pink and sometimes even green on the hair of a customer.
-                            <br>
-                            She wishes to lure in new customers who’d seek her out to get Magda’s uniquely dyed hair. She’d like to have a logo, that will mirror her creative work and stand out among other hairdressers’ logos and brand identities.
-                        </p>
-                        <div class="flex middle">
-                                    <button class="primary-button-style magda-button">
-                                    <div>
-                                        <span onclick="window.open('https://www.instagram.com/magda_studiocreative')">See Magda’s work</span>
-                                    </div>
-                                </button>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div class="container">
-        <section id="takeaways">
-            <div class="section_container">
-                <div class="section_subcontainer row">
-                    <div class="gap-24 flex">
-                        <div class="left">
-                            <h1 class="title width left">Key takeaways</h1>
+                    <div class="flex left gap-24"> 
+                        <h1 class="title right">tl;dr</h1>
+                        <div class="flex left gap-16">
+                            <h2 class="aboutme-h2">Motivation</h2>
+                            <p class="section_text_p2">
+                                 Because of restructuring and my new role as a designer at SAP, my colleague Martin and I mapped out what our stakeholders think and expect from UX. Before I came to SAP no designer was assigned to only one project, so development teams weren’t used to working with a designer on a daily basis.
+                                <br>We focused on learning what past experiences our colleagues had, what would be their ideal cooperation with UX and how advanced their skills with Figma are (mostly to build an ideal Figma structure).
+                             </p>
                         </div>
-                        <div class="gap-16 left">
-                            <h2 class="aboutme-h2 italic-migra">You’ll never get it done on the first try</h2>
-                            <p class="section_text_p2 w-640">
-                                Ideation is a crucial part of creating a brand identity. People have different ideas about terms. When they say they want something abstract, it may not mean what you’re thinking.
-                                <br>
-                                Client’s claims and needs should be validated by pictures. That way it gives an exact idea about the client’s wishes.
-                            </p>
-                        </div>
-                        <div class="gap-16 left">
-                            <h2 class="aboutme-h2 italic-migra">Motivating the client to market themselves</h2>
-                            <p class="section_text_p2 w-640">
-                                Magda fell in love with the final designs and was excited to use them on her social media and new business cards.
-                                <br>
-                                The whole design process motivated her to start marketing her business more on social media. I provided her with some marketing tips and tricks on how to create social media content so she would understand the whole design concept more.
-                                <br>
-                                What Magda appreciates the most is that she’ll be able to stand out from the crowd and do more of what she’s passionate about.    
-                            </p>
-                        </div>
-                        <div class="flex right">
-                        </div>
-                    </div> 
-                </div>
-                     <div class="section_container-photo">
-                <img
-                            src="/assets/MH_brand/pattern mockup.webp"
-                            alt="picture"
-                            class="pattern_mockup"
-                                />
-                     </div>         
-            </div>
-        </section>
-    </div>
-
-    
-    <div class="container">
-        <section id="takeaways">
-            <div class="section_container">
-                <div class="section_subcontainer">
-                    <div class="gap-24 flex">
-                        <div class="right">
-                            <h1 class="title right">Back in time</h1>
-                        </div>
-                        <div class="gap-16 right">
-                            <p class="section_text_p2 w-640">
-                                A competitive research has shown that many hairdressing businesses have implemented scissors, hair combs, siluettes into their logo. Some logos look like they were made in year 2000. 
-                                <br>
-                                An important wish of a client was to abandon this popular concept. Instead, building something original and never-seen-before.    
-                            </p>
-                        </div>
-                        <div class="middle">
-                            <div class="wrapper">
-                                <div class="carousel-container">
-                                  <div class="carousel"></div>
-                                </div>
-                              </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div class="container">
-        <section id="quote">
-            <div class="section_container">
-                <div class="section_subcontainer">
-                    <div class="flex middle">
-                        <div class="quote-wrapper ">
-                            <h1 class="quote-heading pre-line">“I’d like to see <b>colours</b>, <b>creativity</b> 
-                                and <b>boldness</b> in my logo.” 
-                            </h1>
+                        <div class="flex left gap-16">
+                                <h2 class="aboutme-h2">
+                                    Findings
+                                </h2>
+                                <h3 class="subheader_h3 italic-migra">
+                                    We discovered that stakeholders expect UX to:
+                                 </h3>
                             
-                        </div>
-                        <h1 class="quote-heading pre-line margin-top-20">-Magda</h1>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    
-    <div class="container">
-        <section id="sketch">
-            <div class="section_container">
-                <div class="section_subcontainer">
-                    <div class="flex middle">
-                        <div class="final_pic_container">
-                            <img
-                                src="/assets/MH_brand/sketches.webp"
-                                alt="profile picture"
-                                class="final_pic"
-                                 />
-                        </div>
-                        <p class=" w-640 research_p2 middle">
-                            MH initial sketching
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div class="container">
-        <section id="final">
-            <div class="section_container">
-                <div class="section_subcontainer">
-                    <div class="flex gap-124">
-                        <div class="gap-24 flex middle">
-                            <div class="middle gap-16"">
-                                <h1 class="title width middle">Final design</h1>
-                                <p class="section_text_p2 w-640 middle">
-                                    Discover the moodboard
-                                </p>
-                            </div>
-                            <div class="final_pic_container">
-                                <img
-                                    src="/assets/MH_brand/moodboard.webp"
-                                    alt="profile picture"
-                                    class="final_pic"
-                                     />
-                            </div>
-                        </div>
-                        <div class="flex row">
-                            <div class="left gap-16">
-                                <div class="left gap-16"">
-                                    <h2 class="aboutme-h2 italic-migra">The submark logo</h1>
-                                </div>
-                                <div class="flex left gap-16">
-                                    <div class="flex-row middle">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="28" viewBox="0 0 23 28" fill="none">
-                                            <path d="M21.5 14L1.5 2L15.3 14L1.5 26L21.5 14Z" fill="#9D9ADE" stroke="#9D9ADE" stroke-width="3" stroke-linejoin="round"/>
-                                            </svg>
-                                        <p class="w-640 submark_p2">The client’s wish to include MH initials</p>
-                                    </div>
-        
-                                    <div class="flex-row middle">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="28" viewBox="0 0 23 28" fill="none">
-                                            <path d="M21.5 14L1.5 2L15.3 14L1.5 26L21.5 14Z" fill="#9D9ADE" stroke="#9D9ADE" stroke-width="3" stroke-linejoin="round"/>
-                                            </svg>
-                                        <p class=" w-640 submark_p2">
-                                            Swirl = a curled piece of hair, further incorporated to the brand identity
-                                        </p>
-                                    </div>
-        
-                                    <div class="flex-row middle">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="28" viewBox="0 0 23 28" fill="none">
-                                            <path d="M21.5 14L1.5 2L15.3 14L1.5 26L21.5 14Z" fill="#9D9ADE" stroke="#9D9ADE" stroke-width="3" stroke-linejoin="round"/>
-                                            </svg>
-                                            <p class="w-640 submark_p2">
-                                                Colorful and abstract background fulfills client’s expectation
-                                            </p>
-                                    </div>
-                                        
-                                    <div class="flex-row middle">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="28" viewBox="0 0 23 28" fill="none">
-                                            <path d="M21.5 14L1.5 2L15.3 14L1.5 26L21.5 14Z" fill="#9D9ADE" stroke="#9D9ADE" stroke-width="3" stroke-linejoin="round"/>
-                                            </svg>
-                                            <p class="w-640 submark_p2">
-                                                Stands out among other hairdresser’s logos
-                                            </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="right">
-                                <div class="final_pic_container">
-                                    <img
-                                        src="/assets/MH_brand/watercolor_logo.webp"
-                                        alt="profile picture"
-                                        class="final_pic"
-                                         />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div class="container">
-        <section id="vlas">
-            <div class="flex middle center margin-auto">
-                    <div class="flex row no-wrap middle">
-                        <img
-                        src="/assets/MH_brand/vlas.webp"
-                        alt="profile picture"
-                        />
-                        <div class="flex middle width-420 margin-62">
-                                    <h2 class="aboutme-h2 italic-migra ">The hair element ties the brand with hairdressing business.</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div class="container">
-        <section id="final">
-            <div class="section_container">
-                <div class="section_subcontainer">
-                        <div class="flex row no-wrap">
-                            <div class="left gap-16">
-                                <div class="left gap-16"">
-                                    <h2 class="aboutme-h2 italic-migra">The main logo</h1>
-                                </div>
-                                <div class="flex left gap-16">
-                                    <p class="section_text_p2 w-640 middle">
-                                        Concept of the main logo features Magda’s favourite technique - freehand hair painting. The goal was to make typography, that will seem like it was painted with a paintbrush. The swirls connect the main logo with the submark logo.
-                                        <br>
-                                        Part of the brand identity design was to create business cards that would be cohesive with the identity. 
+                                <div class="flex-row middle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="28" viewBox="0 0 23 28" fill="none">
+                                        <path d="M21.5 14L1.5 2L15.3 14L1.5 26L21.5 14Z" fill="#9D9ADE" stroke="#9D9ADE" stroke-width="3" stroke-linejoin="round"/>
+                                    </svg>
+                                    <p class="w-640 research_p2">
+                                        be involved early in the development process
                                     </p>
                                 </div>
-                            </div>
-                            <div class="right">
-                                <img
-                                    src="/assets/MH_brand/mockup_vizitka.webp"
-                                    alt="profile picture"
-                                    class="vizitka"
-                                        />
-                            </div>
+                                <div class="flex-row middle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="28" viewBox="0 0 23 28" fill="none">
+                                        <path d="M21.5 14L1.5 2L15.3 14L1.5 26L21.5 14Z" fill="#9D9ADE" stroke="#9D9ADE" stroke-width="3" stroke-linejoin="round"/>
+                                    </svg>
+                                    <p class=" w-640 research_p2">
+                                        ensure consistency across apps and to adhere to guidelines
+                                    </p>
+                                </div>
+                                <div class="flex-row middle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="28" viewBox="0 0 23 28" fill="none">
+                                        <path d="M21.5 14L1.5 2L15.3 14L1.5 26L21.5 14Z" fill="#9D9ADE" stroke="#9D9ADE" stroke-width="3" stroke-linejoin="round"/>
+                                    </svg>
+                                    <p class="w-640 research_p2">
+                                        translate business requirements to feasible and intuitive designs
+                                    </p>
+                                </div>
                         </div>
+                        <div class="flex left gap-16">
+                                <h2 class="aboutme-h2">Impact</h2>
+                                <h3 class="subheader_h3 italic-migra">The internal research lead to:</h3>
+                           
+                                <div class="flex-row middle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="28" viewBox="0 0 23 28" fill="none">
+                                        <path d="M21.5 14L1.5 2L15.3 14L1.5 26L21.5 14Z" fill="#9D9ADE" stroke="#9D9ADE" stroke-width="3" stroke-linejoin="round"/>
+                                    </svg>
+                                    <p class="w-640 research_p2">
+                                        a stakeholder workshop on UX discovery to increase UX visibility and find UX allies
+                                    </p>
+                                </div>
+                                <div class="flex-row middle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="28" viewBox="0 0 23 28" fill="none">
+                                        <path d="M21.5 14L1.5 2L15.3 14L1.5 26L21.5 14Z" fill="#9D9ADE" stroke="#9D9ADE" stroke-width="3" stroke-linejoin="round"/>
+                                    </svg>
+                                    <p class="w-640 research_p2">
+                                        better structured Figma file tailored to each stakeholders' needs
+                                    </p>
+                                </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="container">
+        <section id="learnings">
+            <div class="section_container">
+                <div class="section_subcontainer">
+                    <div class="gap-24 flex">
+                        <div class="left">
+                            <h1 class="title width left">Learnings and Takeaways</h1>
+                        </div>
+                        <div class="gap-16 left">
+                            <h2 class="aboutme-h2 italic-migra">Remove bias</h2>
+                            <p class="section_text_p2 w-640">
+                                We were conducting research about our own work with colleagues who'd be working with us in the future. This might have created nuances and untruthful feedback.
+                                <br>
+                                However, the stakeholders' answers would repeat, so that was our confirmation of truth.
+                                <br> 
+                                At that time there was no other way to conduct the research. If I were to do it again, I'd ask a different colleague to conduct the interviews.
+                            </p>
+                        </div> 
+                        <div class="gap-16 left">
+                            <h2 class="aboutme-h2 italic-migra">It's ok to improvise</h2>
+                            <p class="section_text_p2 w-640">
+                                During interviews an interviewee would answer in a way that I knew they wouldn't be able to answer the coming questions. I had to improvise and edit the script 
+                                on the spot to keep the conversation flowing and not make it seem like I was ignoring what the interviewee said. This was a learning to prepare questions in case 
+                                the answer is not what I need.
+                            </p>
+                        </div>   
+                        <div class="hero_pic_container">
+                            <img
+                                src="/assets/stakeholder_research/Project3_figjam.webp"
+                                alt="picture"
+                                class="pattern_mockup"
+                            />
+                        </div>
+                        <div class="gap-16 left">
+                            <h2 class="aboutme-h2 italic-migra">Test scales</h2>
+                            <p class="section_text_p2 w-640">
+                                Part of the research were scales where interviewees would place themselves on a scale from "strongly disagree" to "strongly agree". Issue came when interviewees 
+                                would have to answer where to place themselves. Because the points on the scale were named only the worst and best, they'd struggle to express their feelings.
+                                <br>
+                                After adjusting the scales to have numbers 1 to 5 assigned to the points, interviewees' expressiveness increased. Validation from a fresh eye would prevent this 
+                                situation from happening.
+                            </p>
+                        </div>
+                         <div class="hero_pic_container">
+                            <img
+                                src="/assets/stakeholder_research/project3_scales.webp"
+                                alt="picture"
+                                class="pattern_mockup"
+                            />
+                        </div>
+                    </div> 
+               
+                   
+                </div>
+            </div>
+        </section>
+    </div>
+
+     <div class="container">
+        <section id="Discovery workshop">
+            <div class="section_container">
+                 <div class="section_subcontainer">
+                    <div class="gap-24 flex">
+                        <div class="left">
+                            <h1 class="title width left">
+                                Using research data
+                            </h1>
+                            <p class="section_text_p2">
+                                Restructuring in SAP also brought on a big push for customer discovery before development. From our research we knew that stakeholders weren't used to doing user 
+                                research and expected UX to only deliver mockups. 
+                                <br>That's why we took data obtained during the stakeholder interviews and created a workshop for a group of developers and 
+                                a group of product and development managers. The workshop's goal was to show stakeholders what the discovery process and consequently UX is about.
+                                <br> Division of the group had it's reason: product and development managers would work with anonymized data from developers and developers would work with data 
+                                of the managers.
+                            </p>
+                        </div>
+                        <div class="gap-16 left">
+                            <h2 class="aboutme-h2">
+                                Workshop structure
+                            </h2>
+                            <h3 class="subheader_h3">
+                                1st session: Affinity Mapping
+                            </h3>
+                            <p class="section_text_p2">
+                                At the beginning of the workshop, the attendees would get to know a persona of either a developer or product manager to enforce empathy and familiarize them with the concept. 
+                                The group consumed and clustered research data. Based on the research insights they'd formulate problems in the form of "How might we" statements.
+                            </p>
+                            <div class="hero_pic_container">
+                            <img
+                                src="/assets/stakeholder_research/project3_whiteboard.webp"
+                                alt="picture"
+                                class="pattern_mockup"
+                            />
+                            </div>
+                            <h3 class="subheader_h3">
+                                2nd session: Ideation
+                            </h3>
+                            <p class="section_text_p2">
+                                Based on How might we statements from the 1st session, the attendees created ideas with Crazy 8s method to solve a determined problem. We discussed their ideas and graded them based 
+                                on chosen criteria, ie. impact, effort, feasibility. A winner of this decision matrix was taken into journey mapping. In the last part of the 2nd session the group was supposed to validate 
+                                their ideas but due to time reasons, I only showed a question creation guide.
+                            </p>
+                        </div>
+                        <div class="gap-16 left">
+                            <h2 class="aboutme-h2">
+                                Feedback
+                            </h2>
+                            <p class="section_text_p2">
+                                After each session I'd ask for feedback from the workshop attendees. Most impactful discussion we had was developers didn't see value in involvement during the discovery phase. 
+                                They expressed interest in the 2nd part of the double diamond design process (after problem definition) but did not find the problem discovery important to them.
+                            </p>
+                        </div>
+                    </div>
+                 </div>
             </div>
         </section>
     </div>
@@ -426,7 +398,7 @@
                             </div>
                             
                         </a> 
-                        <a href="/pages/project-valentines.html">
+                        <a href="/pages/project-AIVA.html">
                             <div class="card-wrapper">
                                 <svg class="flower_3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 137 138" fill="none">
                                     <path d="M74.1209 67.1593C82.1347 64.9586 89.1061 59.9828 93.7918 53.1193L102.179 40.8337C106.865 33.9703 108.96 25.6655 108.092 17.4006L107.465 11.4363L101.681 13.0244C93.6677 15.2251 86.6963 20.2009 82.0106 27.0644L73.6231 39.35C68.9374 46.2134 66.8421 54.5182 67.7109 62.7831L68.3379 68.7474L74.1209 67.1593Z" fill="#F3C5B2" fill-opacity="0.73"/>
@@ -487,5 +459,6 @@
 
 
         <script src="/pages/script.js"></script>
+        </div> <!-- End page-content -->
 </body>
 </html>

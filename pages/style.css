@@ -99,6 +99,11 @@ h1 {
     margin: 0;
 
 }
+h2 {
+    font-size: 2rem;
+    font-family: 'ClashGrotesk';
+    color: #0E4132;
+}
 
 h3 {
     font-family: 'ClashGrotesk';
@@ -339,12 +344,16 @@ section {
     object-fit: contain;
 }
 
+.media-resize {
+    border-radius: 2rem;
+}
+
 .hello_flower_1 {
     width: 10rem;
     position: absolute;
     rotate: -25deg;
-    z-index: -1;
-    top: 16rem;
+    z-index: 1;
+    top: 20rem;
     left: -5rem;
     animation: move-up6 2s ease-in infinite alternate-reverse;
 }
@@ -356,12 +365,12 @@ section {
 }
 
 .hello_flower_2 {
-    width: 5rem;
+    width: 2.5rem;
     position: absolute;
     rotate: -20deg;
     top: 11rem;
     left: -3rem;
-    z-index: -1;
+    z-index: 1;
     animation: move-down1 2s ease-in infinite alternate-reverse;
 }
   
@@ -374,8 +383,8 @@ section {
     position: absolute;
     rotate: -15deg;
     top: 6rem;
-    left: 0;
-    z-index: -1;
+    left: -2rem;
+    z-index: 1;
     animation: move-up6 2s ease-in infinite alternate-reverse;
 }
   
@@ -389,9 +398,9 @@ section {
     width: 5rem;
     position: absolute;
     rotate: -10deg;
-    top: 4rem;
-    left: 3rem;
-    z-index: -1;
+    top: 0.2rem;
+    left: -3rem;
+    z-index: 1;
     animation: move-up6 2s ease-in infinite alternate-reverse;
 }
   
@@ -404,9 +413,9 @@ section {
 .hello_flower_5 {
     width: 9.5rem;
     position: absolute;
-    top: 0rem;
+    top: 28rem;
     left: 6.5rem;
-    z-index: -1;
+    z-index: 1;
     animation: move-up6 2s ease-in infinite alternate-reverse;
 }
   
@@ -417,12 +426,12 @@ section {
 }
 
 .hello_flower_6 {
-    width: 8.5rem;
+    width: 7.5rem;
     position: absolute;
     rotate: 10deg;
-    top: 3.5rem;
+    top: -0.5rem;
     left: 15rem;
-    z-index: -1;
+    z-index: 1;
     animation: move-up6 2s ease-in infinite alternate-reverse;
 }
   
@@ -433,12 +442,12 @@ section {
 }
 
 .hello_flower_61 {
-    width: 5rem;
+    width: 3.5rem;
     position: absolute;
     rotate: 15deg;
-    top: 7.5rem;
-    left: 23.5rem;
-    z-index: -1;
+    top: 6rem;
+    left: 21rem;
+    z-index: 1;
     animation: move-up6 2s ease-in infinite alternate-reverse;
 }
   
@@ -449,12 +458,12 @@ section {
 }
 
 .hello_flower_7 {
-    width: 7rem;
+    width: 5rem;
     rotate: 15deg;
     position: absolute;
     top: 12.5rem;
     left: 21rem;
-    z-index: -1;
+    z-index: 1;
     animation: move-up6 2s ease-in infinite alternate-reverse;
 }
   
@@ -468,9 +477,9 @@ section {
     width: 5rem;
     rotate: 25deg;
     position: absolute;
-    top: 19.5rem;
+    top: 28rem;
     left: 21rem;
-    z-index: -1;
+    z-index: 1;
     animation: move-up6 2s ease-in infinite alternate-reverse;
 }
   
