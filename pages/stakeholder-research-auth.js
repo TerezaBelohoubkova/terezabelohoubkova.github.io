@@ -132,6 +132,12 @@ async function checkPassword(event) {
 document.addEventListener('DOMContentLoaded', function() {
     checkAuthentication();
     
+    // Attach form submit handler
+    const passwordForm = document.getElementById('password-form');
+    if (passwordForm) {
+        passwordForm.addEventListener('submit', checkPassword);
+    }
+    
     // Check lockout status on load
     const lockout = isLockedOut();
     if (lockout && lockout.locked) {
