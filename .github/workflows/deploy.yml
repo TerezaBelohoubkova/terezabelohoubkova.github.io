@@ -1,3 +1,11 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -5,6 +13,10 @@ jobs:
       contents: read
       pages: write
       id-token: write
+
+    environment:
+      name: github-pages
+      # We'll add the URL after deployment dynamically, so we skip `url:` here.
 
     steps:
       - name: Checkout
@@ -20,8 +32,9 @@ jobs:
           else
             HASH=$(echo -n "$PASSWORD" | openssl dgst -sha256 | sed 's/^.* //')
           fi
+
           sed "s/{{PASSWORD_HASH}}/$HASH/g" pages/password-hash.js.template > pages/password-hash.js
-          echo "Password hash injected (starts with: ${HASH:0:10}...)"
+          echo "Password hash injected successfully (starts with: ${HASH:0:10}...)"
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -35,6 +48,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      # Optionally set the environment URL after deploy succeeds
+      - name: Set environment URL
+        if: ${{ steps.deployment.outputs.page_url != '' }}
+        run: echo "Deployed at: ${{ steps.deployment.outputs.page_url }}"
