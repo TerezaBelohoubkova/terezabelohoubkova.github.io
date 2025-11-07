@@ -104,7 +104,7 @@ async function checkPassword(event) {
     // Hash the entered password and compare
     const enteredHash = await sha256(enteredPassword);
     
-    if (enteredHash === (await sha256(PASSWORD_HASH))) {
+    if (enteredHash === (PASSWORD_HASH)) {
         showContent();
     } else {
         recordAttempt();
