@@ -16,7 +16,6 @@ jobs:
 
     environment:
       name: github-pages
-      # We'll add the URL after deployment dynamically, so we skip `url:` here.
 
     steps:
       - name: Checkout
@@ -48,7 +47,5 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      # Optionally set the environment URL after deploy succeeds
-      - name: Set environment URL
-        if: ${{ steps.deployment.outputs.page_url != '' }}
+      - name: Log deployment URL
         run: echo "Deployed at: ${{ steps.deployment.outputs.page_url }}"
