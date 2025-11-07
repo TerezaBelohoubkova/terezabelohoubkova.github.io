@@ -1,5 +1,5 @@
 // Password Protection for Stakeholder Research Page
-import { PASSWORD_HASH } from '/pages/password-hash.js';
+import { PASSWORD_HASH } from 'pages/password-hash.js';
 const SESSION_STORAGE_KEY = 'stakeholder_research_authenticated';
 const ATTEMPT_STORAGE_KEY = 'stakeholder_research_attempts';
 const MAX_ATTEMPTS = 5;
