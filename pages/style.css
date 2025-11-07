@@ -788,7 +788,7 @@ section {
 
 .pic_about_me {
     border-radius: 2rem;
-    background: url(<path-to-image>) lightgray 50% / cover no-repeat;
+    background: lightgray 50% / cover no-repeat;
     box-shadow: 70px 49px 24px 0px rgba(122, 122, 122, 0.00), 45px 31px 22px 0px rgba(122, 122, 122, 0.01), 25px 18px 18px 0px rgba(122, 122, 122, 0.05), 11px 8px 14px 0px rgba(122, 122, 122, 0.09), 3px 2px 8px 0px rgba(122, 122, 122, 0.10);
 }
 
@@ -1032,7 +1032,7 @@ section {
     align-items: center;
     transition: all 0.2s;
     overflow: hidden;
-    background: url(<path-to-image>) lightgray 50% / cover no-repeat;
+    background: lightgray 50% / cover no-repeat;
     box-shadow: 70px 49px 24px 0px rgba(122, 122, 122, 0.00), 45px 31px 22px 0px rgba(122, 122, 122, 0.01), 25px 18px 18px 0px rgba(122, 122, 122, 0.05), 11px 8px 14px 0px rgba(122, 122, 122, 0.09), 3px 2px 8px 0px rgba(122, 122, 122, 0.10);
 }
 
