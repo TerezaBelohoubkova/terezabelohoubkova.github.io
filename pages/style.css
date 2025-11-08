@@ -349,12 +349,12 @@ section {
 }
 
 .hello_flower_1 {
-    width: 10rem;
+    width: 40%;
     position: absolute;
     rotate: -25deg;
     z-index: 1;
-    top: 20rem;
-    left: -5rem;
+    top: 90%;
+    left: -15%;
     animation: move-up6 2s ease-in infinite alternate-reverse;
 }
   
@@ -365,11 +365,11 @@ section {
 }
 
 .hello_flower_2 {
-    width: 2.5rem;
+    width: 18%;
     position: absolute;
     rotate: -20deg;
-    top: 11rem;
-    left: -3rem;
+    top: 51%;
+    left: -30%;
     z-index: 1;
     animation: move-down1 2s ease-in infinite alternate-reverse;
 }
@@ -382,8 +382,8 @@ section {
     width: 6rem;
     position: absolute;
     rotate: -15deg;
-    top: 6rem;
-    left: -2rem;
+    top: 32%;
+    left: -20%;
     z-index: 1;
     animation: move-up6 2s ease-in infinite alternate-reverse;
 }
@@ -399,7 +399,7 @@ section {
     position: absolute;
     rotate: -10deg;
     top: 0.2rem;
-    left: -3rem;
+    left: -15%;
     z-index: 1;
     animation: move-up6 2s ease-in infinite alternate-reverse;
 }
@@ -413,7 +413,7 @@ section {
 .hello_flower_5 {
     width: 9.5rem;
     position: absolute;
-    top: 28rem;
+    top: 80%;
     left: 6.5rem;
     z-index: 1;
     animation: move-up6 2s ease-in infinite alternate-reverse;
@@ -426,11 +426,11 @@ section {
 }
 
 .hello_flower_6 {
-    width: 7.5rem;
+    width: 5.5rem;
     position: absolute;
     rotate: 10deg;
-    top: -0.5rem;
-    left: 15rem;
+    top: 0%;
+    left: 75%;
     z-index: 1;
     animation: move-up6 2s ease-in infinite alternate-reverse;
 }
@@ -442,11 +442,11 @@ section {
 }
 
 .hello_flower_61 {
-    width: 3.5rem;
+    width: 3rem;
     position: absolute;
     rotate: 15deg;
-    top: 6rem;
-    left: 21rem;
+    top: 20%;
+    left: 70%;
     z-index: 1;
     animation: move-up6 2s ease-in infinite alternate-reverse;
 }
@@ -458,11 +458,11 @@ section {
 }
 
 .hello_flower_7 {
-    width: 5rem;
+    width: 4rem;
     rotate: 15deg;
     position: absolute;
-    top: 12.5rem;
-    left: 21rem;
+    top: 50%;
+    left: 74%;
     z-index: 1;
     animation: move-up6 2s ease-in infinite alternate-reverse;
 }
@@ -474,11 +474,11 @@ section {
 }
 
 .hello_flower_8 {
-    width: 5rem;
+    width: 3.5rem;
     rotate: 25deg;
     position: absolute;
-    top: 28rem;
-    left: 21rem;
+    top: 89%;
+    left: 95%;
     z-index: 1;
     animation: move-up6 2s ease-in infinite alternate-reverse;
 }
@@ -1108,7 +1108,7 @@ section {
 }
 
 .flower_3 {
-    width: 15%;
+    width: 14%;
     position: absolute;
     z-index: 1;
     animation: move-up6 2s ease-in infinite alternate-reverse;
@@ -1129,6 +1129,7 @@ section {
     width: 30%;
     position: absolute;
     z-index: 1;
+    rotate: 10%;
     animation: move-up6 2s ease-in infinite alternate-reverse;
 }
 
@@ -1171,7 +1172,7 @@ section {
 }
 
 .flower_6 {
-    width: 35%;
+    width: 25%;
     position: absolute;
     z-index: 1;
     rotate: 30deg;
@@ -1184,7 +1185,7 @@ section {
   
 .flower_6:nth-child(2) {
     bottom: -10%;
-    right: 75%;
+    right: 70%;
     animation-name: move-down1;
 }
 
@@ -1225,6 +1226,14 @@ section {
 @media only screen and (max-width: 1000px) {
     .hover-text {
         font-size: 1rem;
+    }
+
+    #home .section_text-container{
+        margin-left: 2rem;
+    }
+
+    #home .aboutme-h2 {
+        font-size: 1.5rem;
     }
 }
 
@@ -1277,7 +1286,7 @@ section {
     }
 
     #home .section_container{
-        gap: 0;
+        gap: 2rem;
     }
 
     .space_between{
@@ -1311,28 +1320,20 @@ section {
     }
 
     #home {
-        margin-top: 4vh;
+        margin-top: 2vh;
+    }
+     #home .section_text-container{
+        margin-left: 0rem;
     }
     .hello_flower_1 {
         left: -15%;
-    }
-
-    .hello_flower_2 {
-        left: -10%;
-    }
-
-    .hello_flower_3 {
-        left: 0%;
-    }
-
-    .hello_flower_4 {
-        left: 10%;
-        top: 2rem;
+        top: 80%;
     }
 
     .hello_flower_5 {
         left: 30%;
-        width: 8rem;
+        top: 90%;
+        width: 6rem;
     }
 
     .hello_flower_6 {
