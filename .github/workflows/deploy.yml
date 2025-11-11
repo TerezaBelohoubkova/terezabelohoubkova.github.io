@@ -29,11 +29,19 @@ jobs:
             echo "Warning: STAKEHOLDER_PASSWORD secret is not set. Using placeholder."
             HASH="PLACEHOLDER_PASSWORD_HASH"
           else
-            HASH=$(echo -n "$PASSWORD" | openssl dgst -sha256 | sed 's/^.* //')
+            HASH=$(node -e "const crypto = require('crypto'); console.log(crypto.createHash('sha256').update(process.argv[1]).digest('hex'))" "$PASSWORD")
           fi
 
+          echo "Creating password-hash.js with hash: ${HASH:0:10}..."
           sed "s/{{PASSWORD_HASH}}/$HASH/g" pages/password-hash.js.template > pages/password-hash.js
-          echo "Password hash injected successfully (starts with: ${HASH:0:10}...)"
+          
+          if [ -f pages/password-hash.js ]; then
+            echo "✓ password-hash.js created successfully"
+            head -1 pages/password-hash.js
+          else
+            echo "✗ ERROR: password-hash.js was not created!"
+            exit 1
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
