@@ -124,9 +124,6 @@ async function checkPassword(event) {
     
     // Hash the entered password and compare
     const enteredHash = await pbkdf2Hash(enteredPassword);
-    console.log('Entered hash:', enteredHash);
-    console.log('Expected hash:', PASSWORD_HASH);
-    console.log('Match:', enteredHash === PASSWORD_HASH);
     
     if (enteredHash === (PASSWORD_HASH)) {
         showContent();
