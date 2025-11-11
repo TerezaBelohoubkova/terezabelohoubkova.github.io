@@ -1,16 +1,37 @@
-// Password Protection for Stakeholder Research Page
-import { PASSWORD_HASH } from '/pages/password-hash.js';
 const SESSION_STORAGE_KEY = 'stakeholder_research_authenticated';
 const ATTEMPT_STORAGE_KEY = 'stakeholder_research_attempts';
 const MAX_ATTEMPTS = 5;
 const LOCKOUT_TIME = 300000; // 5 minutes in milliseconds
-
-// Simple SHA-256 hash function
-async function sha256(message) {
-    const msgBuffer = new TextEncoder().encode(message);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+const SALT = 'stakeholder_salt';
+const ITERATIONS = 100000;
+const PASSWORD_HASH = 'e0d42196b80a20d3a41b3420a2bf3cf3c2d9dbf1efbf15fd2b43f75ac22207e8';
+// PBKDF2 hash function using Web Crypto API
+async function pbkdf2Hash(password) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const saltData = encoder.encode(SALT);
+    
+    const key = await crypto.subtle.importKey(
+        'raw',
+        data,
+        { name: 'PBKDF2' },
+        false,
+        ['deriveBits']
+    );
+    
+    const bits = await crypto.subtle.deriveBits(
+        {
+            name: 'PBKDF2',
+            salt: saltData,
+            iterations: ITERATIONS,
+            hash: 'SHA-256'
+        },
+        key,
+        256
+    );
+    
+    const hashArray = Array.from(new Uint8Array(bits));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
 // Check if user is locked out
@@ -102,7 +123,10 @@ async function checkPassword(event) {
     }
     
     // Hash the entered password and compare
-    const enteredHash = await sha256(enteredPassword);
+    const enteredHash = await pbkdf2Hash(enteredPassword);
+    console.log('Entered hash:', enteredHash);
+    console.log('Expected hash:', PASSWORD_HASH);
+    console.log('Match:', enteredHash === PASSWORD_HASH);
     
     if (enteredHash === (PASSWORD_HASH)) {
         showContent();
