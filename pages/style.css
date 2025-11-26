@@ -71,6 +71,16 @@
         url('/fonts/agrandir-widelight-webfont.woff2') format('woff2');
 }
 
+@font-face {
+  font-family: 'GeneralSans-Variable';
+  src: url('/fonts/GeneralSans-Variable.woff2') format('woff2'),
+       url('/fonts/GeneralSans-Variable.woff') format('woff'),
+       url('/fonts/GeneralSans-Variable.ttf') format('truetype');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -115,9 +125,10 @@ h3 {
 
 p {
     color: #222;
-    font-family: 'Agrandir';
-    font-weight: normal;
+    font-family: 'GeneralSans-Variable';
+    font-weight: 500;
     font-style: normal;
+    font-size: 1.2rem;
     max-width: 70em;
     line-height: calc(1ex / 0.32);
     margin: 0;
@@ -168,7 +179,7 @@ nav,
     align-items: center;
     justify-content: space-between;
     height: 10vh;
-    font-family: 'Agrandir';
+    font-family: 'ClashGrotesk';
     font-weight: bold;
     text-shadow: 1px 1px 10px #FFF, 1px 1px 10px #F0F0F5;
 
@@ -334,6 +345,7 @@ section {
 
 #home .section_container {
     justify-content: space-evenly;
+    gap: 2rem;
 }
 
 .section__pic-container {
@@ -345,7 +357,9 @@ section {
 }
 
 .media-resize {
-    border-radius: 2rem;
+    width: 100%;
+    height: 100%;
+    box-shadow: 70px 49px 24px 0px rgba(122, 122, 122, 0.00), 45px 31px 22px 0px rgba(122, 122, 122, 0.01), 25px 18px 18px 0px rgba(122, 122, 122, 0.05), 11px 8px 14px 0px rgba(122, 122, 122, 0.09), 3px 2px 8px 0px rgba(122, 122, 122, 0.10);
 }
 
 .hello_flower_1 {
@@ -497,30 +511,27 @@ section {
 
 .section_text_p {
     font-weight: normal;
-    letter-spacing: 1.6px;
     line-height: calc(1ex / 0.32);
     text-align: center;
 }
 
 .section_text_p1 {
     color: #000;
-    font-family: Agrandir;
+    font-family: GeneralSans-Variable;
     font-size: 1rem;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 500;
     line-height: calc(1ex / 0.32);
-    letter-spacing: 1.6px;
     flex: 0;
 }
 
 .section_text_p2 {
     color: #000;
-    font-family: Agrandir;
-    font-size: 1rem;
+    font-family: GeneralSans-Variable;
+    font-size: 1.2rem;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 400;
     line-height: calc(1ex / 0.32);
-    letter-spacing: 1.6px;
     flex: 0;
     max-width: 70em;
 }
@@ -532,7 +543,6 @@ section {
     font-style: normal;
     font-weight: 300;
     line-height: calc(1ex / 0.32);
-    letter-spacing: 1.6px;
     flex: 0;
     max-width: 70em;
 }
@@ -598,7 +608,7 @@ section {
 .details-container>h2 {
     color: #000;
     text-align: center;
-    font-family: Agrandir;
+    font-family: ClashGrotesk;
     font-size: 20px;
     font-style: normal;
     font-weight: 300;
@@ -626,7 +636,6 @@ section {
     font-style: normal;
     font-weight: 300;
     line-height: normal;
-    letter-spacing: 2px;
     margin: 0;
 
 }
@@ -638,7 +647,6 @@ section {
 .project-image {
     display: block;
     height: auto;
-    border-radius: 2rem;
     object-fit: cover;
     max-width: 100%;
 }
@@ -676,7 +684,7 @@ section {
     transform: translate(-50%, -50%);
     text-align: center;
     transition: .5s ease;
-    font-family: Agrandir;
+    font-family: ClashGrotesk;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
@@ -753,21 +761,20 @@ section {
 .primary-button {
     justify-content: center;
     align-items: center;
-    max-width: 300px;
+    max-width: 250px;
     height: auto;
     cursor: pointer;
 }
 
 .primary-button-style {
-    padding: 18px 36px;
-    font-family: Agrandir;
-    font-size: 1rem;
-    font-weight: 800;
+    padding: 18px 26px;
+    font-family: GeneralSans-Variable;
+    font-size: 1.2rem;
+    font-weight: 500;
     border: none;
     border-radius: 43px;
     background: #D5D3F8;
     transition: all 0.3s ease-in-out;
-    letter-spacing: 1.6px;
     width: 100%;
     text-decoration: none;
     cursor: pointer;
@@ -783,13 +790,17 @@ section {
 
 #aboutme .section__pic-container {
     height: 60vh;
-    margin-left: 1rem;
 }
 
 .pic_about_me {
-    border-radius: 2rem;
     background: lightgray 50% / cover no-repeat;
     box-shadow: 70px 49px 24px 0px rgba(122, 122, 122, 0.00), 45px 31px 22px 0px rgba(122, 122, 122, 0.01), 25px 18px 18px 0px rgba(122, 122, 122, 0.05), 11px 8px 14px 0px rgba(122, 122, 122, 0.09), 3px 2px 8px 0px rgba(122, 122, 122, 0.10);
+    margin-left: 2rem;
+}
+.pic_about_me2 {
+    background: lightgray 50% / cover no-repeat;
+    box-shadow: 70px 49px 24px 0px rgba(122, 122, 122, 0.00), 45px 31px 22px 0px rgba(122, 122, 122, 0.01), 25px 18px 18px 0px rgba(122, 122, 122, 0.05), 11px 8px 14px 0px rgba(122, 122, 122, 0.09), 3px 2px 8px 0px rgba(122, 122, 122, 0.10);
+    margin-right: 2rem;
 }
 
 .vibes-pic-container {
@@ -958,20 +969,20 @@ section {
 
 .get-in-touch{
     color: #000;
-    font-family: Agrandir;
-    font-size: 24px;
+    font-family: GeneralSans-Variable;
+    font-size: 1.5rem;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 400;
     line-height: calc(1ex / 0.32);
     margin: auto;
 }
 
 .linkedin{
     color: #9D9ADE;
-    font-family: Agrandir;
-    font-size: 24px;
+    font-family: GeneralSans-Variable;
+    font-size: 1.5rem;
     font-style: normal;
-    font-weight: 800;
+    font-weight: 700;
     line-height: calc(1ex / 0.32);
 }
 
@@ -1026,7 +1037,6 @@ section {
 .card {
     position: relative;
     width: fit-content;
-    border-radius: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1398,7 +1408,7 @@ section {
     .project-image {
         max-width: 100%;
         height: auto;
-        max-height: 100%;
+        max-height: 100;
     }
 
     .details-container>h2 {
